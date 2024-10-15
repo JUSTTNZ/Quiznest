@@ -1,5 +1,12 @@
-
+import { Addition } from "./Addition"
+import { useNavigate } from "react-router-dom"
 export const Categories = () => {
+    const navigate = useNavigate()
+    const addition = () => {
+        console.log('yes')
+       navigate('add')
+       
+    }
     return(
         <div className='  bg-[#dbf5ff] w-full h-auto md:h-[359px] '>
             <div className="container mx-auto ">
@@ -10,7 +17,7 @@ export const Categories = () => {
               
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:p-[50px]" >
                     <div className="flex flex-col items-center">
-                    <div className="rounded-full bg-blue-700 w-40 h-40 flex justify-center items-center  text-4xl text-white">
+                    <div className="rounded-full bg-blue-700 w-40 h-40 flex justify-center items-center  text-4xl text-white" onClick={addition}>
                   2+2
                   </div>
                   <p className="text-2xl font-semibold mt-2">Addition</p>
