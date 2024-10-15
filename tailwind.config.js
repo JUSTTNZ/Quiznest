@@ -10,7 +10,7 @@ export default {
         'primary': '#d5e9ef'
       },
       fontFamily:{
-        yeseva : ["'Yeseva One'",'Segoe UI', 'Helvetica'],
+        sans : ['Segoe UI', 'Helvetica'],
       },
     },
   },
