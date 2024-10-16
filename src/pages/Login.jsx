@@ -59,8 +59,8 @@ const Login = () => {
   return (
     <>
       <div className='bg-background h-screen flex items-center justify-center cursor-pointer font-sans'>
-        <div className='bg-primary flex flex-col max-w-full p-8 rounded gap-8'>
-          <h2 className='font-bold font-sans leading-loose text-2xl text-background'>
+        <div className='bg-primary flex flex-col max-w-full mx-4 p-8 rounded gap-8'>
+          <h2 className='font-bold font-sans leading-loose text-xl text-background'>
             Enter your name to begin
           </h2>
           <input
