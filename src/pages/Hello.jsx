@@ -3,14 +3,14 @@ import { NameContext } from '../Context/NameContext';
 
 const Hello = () => {
   const { name } = useContext(NameContext);
-  const [scale, setScale] = useState(0); // Initial scale state
+  const [scale, setScale] = useState(0); // 
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setScale(1); // Scale up to final size after a delay
-    }, 100); // Adjust the delay as needed
+      setScale(1); // 
+    }, 100); // 
 
-    return () => clearTimeout(timer); // Cleanup on unmount
+    return () => clearTimeout(timer); 
   }, []);
 
   return (
