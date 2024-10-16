@@ -1,15 +1,57 @@
-import React, {useContext, useState} from 'react'
-import { NameContext } from '../Context/NameContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { NameContext } from '../Context/NameContext';
+
 const Hello = () => {
-  const {name} = useContext(NameContext)
+  const { name } = useContext(NameContext);
+  const [scale, setScale] = useState(0); // Initial scale state
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScale(1); // Scale up to final size after a delay
+    }, 100); // Adjust the delay as needed
+
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, []);
+
   return (
     <>
-       <div className=' flex flex-col justify-center gap-4 px-2 bg-background w-full h-[200px] text-white text-2xl '>
-        <p className=''>Hello {name.toUpperCase()}👋</p>
-        <p>Please select a category you would like to play</p>
+      <style>
+        {`
+          @keyframes moveBlob {
+            0% {
+              left: -3rem; /* Start off-screen */
+            }
+            50% {
+              left: calc(100% + 3rem); /* End position (off-screen right) */
+            }
+            100% {
+              left: -3rem; /* Start again */
+            }
+          }
+
+          .animate-moveBlob {
+            animation: moveBlob 5s linear infinite;
+          }
+
+          .blob {
+            transform: scale(${scale});
+            transition: transform 0.8s ease-in-out; /* Smooth scaling effect */
+          }
+        `}
+      </style>
+      <div className='relative flex flex-col justify-center gap-4 px-2 bg-background w-full h-[200px] text-white text-2xl overflow-hidden'>
+        <p className={`text ${scale === 0 ? 'opacity-0' : 'opacity-100'}`}>Hello {name.toUpperCase()}👋</p>
+        <p className={`text ${scale === 0 ? 'opacity-0' : 'opacity-100'}`}>Please select a category you would like to play</p>
+        <div
+          className={`absolute left-0 transform -translate-y-1/2 w-[200px] h-[200px] rounded-full animate-moveBlob z-0 blob`}
+          style={{
+            background: `linear-gradient(to right, rgba(42, 115, 122, 0.3), rgba(255, 255, 255, 0.3))`
+          }}
+        ></div>
       </div>
     </>
-  )
+  );
 }
 
-export default Hello
+export default Hello;
+
