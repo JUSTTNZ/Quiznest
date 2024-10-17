@@ -95,6 +95,7 @@ export const Addition = () => {
                        <h2 className='text-8xl tracking-tight mb-5'>
                         {problem.question}
                        </h2>
+
                        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4' >
                         {problem.options.map((Option,optionindex) => (
  <div className='flex justify-center items-center' key={optionindex}>
@@ -107,8 +108,11 @@ export const Addition = () => {
      {Option}
  </div>
 </div>
+                   
                         ))}
                        
+
+                     
 
 
                        </div>
@@ -124,6 +128,7 @@ export const Addition = () => {
                                 Next Question
                        </button>
                     
+
                      
                     </div>
                 ))}
