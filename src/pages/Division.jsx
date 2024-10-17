@@ -6,6 +6,7 @@ const Division = () => {
 
     const navigate = useNavigate()
     const [selectedAnswer, setSelectedAnswer] = useState(null)
+    const [activeOption, setActiveOption] = useState(null)
     const [isCorrect, setIsCorrect] = useState(null)
     const [currentQuestion, setCurrentQuestion] = useState(0)
 
@@ -58,23 +59,35 @@ const Division = () => {
                        <h2 className='text-7xl text-center tracking-tight mb-5'>
                         {problem.question}
                        </h2>
-                       <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4' >
-                        {problem.options.map((Option,optionindex) => (
-                        <div className='flex justify-center items-center' key={optionindex}>
-                        <div className='flex justify-center items-center rounded-full bg-gray-700 w-24 h-24 text-4xl text-white cursor-pointer'onClick={()=> HandleAnswer(Option)} >
-                            {Option}
-                        </div>
-                        </div>
+                       <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 py-5 mb-4'>
+                        {problem.options.map((Option, optionIndex) => (
+                            <div className='flex justify-center items-center' key={optionIndex}>
+                            <div
+                                className={`flex justify-center items-center rounded-full w-20 h-20 md:w-24 md:h-24 text-3xl md:text-4xl text-white cursor-pointer transition duration-300 ease-in-out transform 
+                                ${activeOption === Option ? 'bg-yellow-500' : 'bg-gray-700'} 
+                                hover:bg-yellow-500 active:scale-95`}
+                                onClick={() => HandleAnswer(Option)}
+                            >
+                                {Option}
+                            </div>
+                            </div>
                         ))}
-                       </div>
-                 
-                       <button className={`bg-gray-700 py-2 px-2 mt-3 text-white cursor-pointer 
-                         ${selectedAnswer === null ? 'cursor-not-allowed':''}
-                       `}
-                       onClick={NextQuestion}
-                       aria-disabled={currentQuestion >= questions.length-1}
-                       disabled={currentQuestion >= questions.length - 1}
-                       >Next Question</button>
+                        </div>
+
+                        <button
+                        className={`bg-gray-700 py-2 px-2 mt-3 text-white cursor-pointer 
+                            ${selectedAnswer === null ? 'cursor-not-allowed opacity-50' : 'hover:bg-blue-500'}
+                        `}
+                        onClick={() => {
+                            NextQuestion();
+                            setSelectedAnswer(null); // Clear selected answer when moving to the next question
+                        }}
+                        disabled={selectedAnswer === null || currentQuestion >= questions.length - 1}
+                        aria-disabled={selectedAnswer === null || currentQuestion >= questions.length - 1}
+                        >
+                        Next Question
+                        </button>
+
                     </div>
                     ))}
                 </div>
