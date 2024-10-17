@@ -2,15 +2,17 @@ import { CloseCircle } from 'iconsax-react';
 import { AdditionQuestion } from '../components/Addarray';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setScore } from '../action';
 export const Addition = () => {
    const navigate = useNavigate()
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [selectanswer, setselectedanswer] = useState(null)
     const [previousAnswer, setPreviousAnswer] = useState(null)
-    const [isCorrect, setIsCorrect] = useState(null);
-    const [score, setscore] = useState(0)
-    
+   
+    const score = useSelector((state) => state.score)
     const questions = Object.values(AdditionQuestion)
+    const dispatch = useDispatch()
     const HandleAnswer = (answer) => {
         const MainAnswer = questions[currentQuestion].answer;
         if (selectanswer === answer) return;
@@ -19,9 +21,10 @@ export const Addition = () => {
         setselectedanswer(answer)
         // Score calculation based on the current answer
         if (answer === MainAnswer) {
-            setscore((prevScore) => prevScore + 1); 
+            dispatch(setScore(score + 1));
+            console.log('score', score)
         } else if (wasCorrect) {
-            setscore((prevScore) => prevScore - 1); 
+            dispatch(setScore(score - 1));
         }
     
         // Update previous answer
