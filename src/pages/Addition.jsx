@@ -6,34 +6,46 @@ export const Addition = () => {
    const navigate = useNavigate()
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [selectanswer, setselectedanswer] = useState(null)
+    const [previousAnswer, setPreviousAnswer] = useState(null)
     const [isCorrect, setIsCorrect] = useState(null);
+    const [score, setscore] = useState(0)
+    
     const questions = Object.values(AdditionQuestion)
     const HandleAnswer = (answer) => {
+        const MainAnswer = questions[currentQuestion].answer;
+        if (selectanswer === answer) return;
+        // Track the previous answer before updating
+        const wasCorrect = selectanswer === MainAnswer; 
         setselectedanswer(answer)
-        const correctanswer = questions[currentQuestion].answer
-        if (answer === correctanswer){
-            setIsCorrect(true)
-        }else{
-            setIsCorrect(false)
+        // Score calculation based on the current answer
+        if (answer === MainAnswer) {
+            setscore((prevScore) => prevScore + 1); 
+        } else if (wasCorrect) {
+            setscore((prevScore) => prevScore - 1); 
         }
-        console.log('clicked')
-    }
+    
+        // Update previous answer
+        setPreviousAnswer(selectanswer);
+    };
+    
+    
     const NextQuestion = () => {
-        if (selectanswer !== null && currentQuestion < questions.length -1 ){
-            setCurrentQuestion(
-                currentQuestion + 1
-            )
-            setselectedanswer(null)
-            console.log('moving')
-        }else
-            if(currentQuestion >= questions.length -1){
-                navigate('/score')
+        if (selectanswer !== null) {
+           
+            if (currentQuestion === questions.length - 1) {
+                navigate('/score');
+            } else {
+                
+                setCurrentQuestion(currentQuestion + 1);
+                setselectedanswer(null);
+                setPreviousAnswer(null)
             }
-            
-    }
+        }
+    };
+    
    
     return(
-        <div className="h-auto bg-[#BF5700]">
+        <div className="h-auto bg-[#BF5700] bg-[#FF7544, #DB3A00] ">
             <div className="container mx-auto p-12">
                 <div className="flex pl-6 ">
                 <CloseCircle size="32" color="#FF8A65"/>
@@ -46,6 +58,7 @@ export const Addition = () => {
                      
                      `} >
                         <p className='text center' >
+                          {score}
                             Question {currentQuestion + 1} of {questions.length}
                         </p>
                        <h2 className='text-8xl tracking-tight mb-5'>
@@ -54,7 +67,12 @@ export const Addition = () => {
                        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4' >
                         {problem.options.map((Option,optionindex) => (
  <div className='flex justify-center items-center' key={optionindex}>
- <div className='flex justify-center items-center rounded-full bg-gray-700 w-24 h-24 text-4xl text-white cursor-pointer'onClick={()=> HandleAnswer(Option)} >
+ <div className={`flex justify-center items-center rounded-full bg-[#EA8B69] shadow-[#a82d0080] shadow-[12rem] border-[10px] border-[hsl(16,95%,62%)] border w-24 h-24 text-4xl text-white cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110
+ ${selectanswer === Option ? 'bg-[hsl(16,100%,53%)]':''}
+ `}
+ 
+ onClick={()=> HandleAnswer(Option)} >
+    
      {Option}
  </div>
 </div>
@@ -70,8 +88,7 @@ export const Addition = () => {
                        `}
                        
                        onClick={NextQuestion}
-                       aria-disabled={currentQuestion >= questions.length-1}
-                       disabled={currentQuestion >= questions.length - 1}
+                       
                        >
                                 Next Question
                        </button>

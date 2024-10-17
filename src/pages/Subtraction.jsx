@@ -72,8 +72,7 @@ const Subtraction = () => {
                          ${selectedAnswer === null ? 'cursor-not-allowed':''}
                        `}
                        onClick={NextQuestion}
-                       aria-disabled={currentQuestion >= questions.length-1}
-                       disabled={currentQuestion >= questions.length - 1}
+                    
                        >Next Question</button>
                     </div>
                     ))}
