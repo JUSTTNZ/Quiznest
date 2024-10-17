@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { DivisionQuestion } from '../components/Divisionarray.jsx'
+import { MultiplicationQuestion } from '../components/MultiplicationArray'; 
 import { CloseCircle } from 'iconsax-react';
-const Division = () => {
+const Multiplication = () => {
 
     const navigate = useNavigate()
     const [selectedAnswer, setSelectedAnswer] = useState(null)
     const [isCorrect, setIsCorrect] = useState(null)
     const [currentQuestion, setCurrentQuestion] = useState(0)
 
-    const questions = Object.values(DivisionQuestion)
+    const questions = Object.values(MultiplicationQuestion)
 
     const HandleAnswer = (answer) => {
         setSelectedAnswer(answer)
@@ -40,7 +40,7 @@ const Division = () => {
 
   return (
     <>
-      <div className="h-auto bg-[#BF5e]">
+      <div className="h-auto bg-[#3357ff]">
             <div className="container mx-auto p-12">
                 <div className="flex pl-6 ">
                 <CloseCircle size="32" color="#FF8A65"/>
@@ -52,10 +52,10 @@ const Division = () => {
                       ${index === currentQuestion ? 'block': 'hidden'}
                      
                      `} >
-                        <p className='text center' >
+                        <p className='text center text-center text-2xl' >
                             Question {currentQuestion + 1} of {questions.length}
                         </p>
-                       <h2 className='text-7xl text-center tracking-tight mb-5'>
+                       <h2 className='text-7xl tracking-tight text-center mb-5'>
                         {problem.question}
                        </h2>
                        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4' >
@@ -87,4 +87,4 @@ const Division = () => {
   )
 }
 
-export default Division
+export default Multiplication
