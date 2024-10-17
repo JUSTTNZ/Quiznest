@@ -1,4 +1,4 @@
-// import { CloseCircle } from 'iconsax-react';
+import { CloseCircle } from 'iconsax-react';
 import { AdditionQuestion } from '../components/Addarray';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
