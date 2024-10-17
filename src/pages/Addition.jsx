@@ -9,7 +9,7 @@ export const Addition = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [selectanswer, setselectedanswer] = useState(null)
     const [previousAnswer, setPreviousAnswer] = useState(null)
-   
+    const [showModal, setShowModal] = useState(false)
     const score = useSelector((state) => state.score)
     const questions = Object.values(AdditionQuestion)
     const dispatch = useDispatch()
@@ -34,10 +34,16 @@ export const Addition = () => {
     
     const NextQuestion = () => {
         if (selectanswer !== null) {
-           
+            const MainAnswer = questions[currentQuestion].answer;
+           if (selectanswer !== MainAnswer){
+            setShowModal(true);
+           }
+
             if (currentQuestion === questions.length - 1) {
                 navigate('/score');
-            } else {
+            }
+            
+            else {
                 
                 setCurrentQuestion(currentQuestion + 1);
                 setselectedanswer(null);
@@ -45,8 +51,23 @@ export const Addition = () => {
             }
         }
     };
-    
-   
+    const CloseModal = () => {
+      
+        setShowModal(false);
+
+            if (currentQuestion === questions.length - 1) {
+                navigate('/score');
+            }
+            
+            else {
+                
+                setCurrentQuestion(currentQuestion + 1);
+                setselectedanswer(null);
+                setPreviousAnswer(null)
+            }
+        
+    };
+    const MainAnswer = questions[currentQuestion].answer;
     return(
         <div className="h-auto bg-[#BF5700] bg-[#FF7544, #DB3A00] ">
             <div className="container mx-auto p-12">
@@ -61,7 +82,7 @@ export const Addition = () => {
                      
                      `} >
                         <p className='text center' >
-                          {score}
+                         
                             Question {currentQuestion + 1} of {questions.length}
                         </p>
                        <h2 className='text-8xl tracking-tight mb-5'>
@@ -104,7 +125,32 @@ export const Addition = () => {
                
 
             </div>
-
+<Modal isOpen={showModal} CloseModal={CloseModal} questions={questions} currentQuestion={currentQuestion} MainAnswer={MainAnswer} />
         </div>
     )
 }
+
+
+
+export const Modal = ({ isOpen,CloseModal, questions, currentQuestion, MainAnswer }) => {
+  if (!isOpen) return null; // Don't render the modal if it's not open
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+        <div className="flex justify-between items-center">
+        </div>
+        <div className="mt-4">
+        Oops, that's not the right answer, 24 + 23 is actually 24
+        </div>
+        <div className="mt-6 flex justify-end">
+          <button onClick={CloseModal}
+            className="bg-gray-700 py-2 px-2 mt-3 text-white cursor-pointer ">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
