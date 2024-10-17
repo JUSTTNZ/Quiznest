@@ -8,7 +8,6 @@ import { Modal } from '../components/modal';
 export const Addition = () => {
    const navigate = useNavigate()
     const [currentQuestion, setCurrentQuestion] = useState(0)
-    const [activeOption, setActiveOption] = useState(null)
     const [selectanswer, setselectedanswer] = useState(null)
     const [previousAnswer, setPreviousAnswer] = useState(null)
     const [showModal, setShowModal] = useState(false)
@@ -111,7 +110,7 @@ export const Addition = () => {
 </div>
                    
                         ))}
-                        </div>
+                       
 
                      
 
@@ -142,7 +141,6 @@ export const Addition = () => {
         </div>
     )
 }
-
 
 
 

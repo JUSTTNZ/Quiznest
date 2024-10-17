@@ -72,6 +72,19 @@ const Subtraction = () => {
                             </div>
                             </div>
                         ))}
+<<<<<<< HEAD
+<<<<<<< HEAD
+                       </div>
+                 
+                       <button className={`bg-gray-700 py-2 px-2 mt-3 text-white cursor-pointer 
+                         ${selectedAnswer === null ? 'cursor-not-allowed':''}
+                       `}
+                       onClick={NextQuestion}
+                    
+                       >Next Question</button>
+=======
+=======
+>>>>>>> b59d19bad409350058c35fc79662d4ef9c6dffbc
                         </div>
 
                         <button
@@ -88,6 +101,10 @@ const Subtraction = () => {
                         Next Question
                         </button>
 
+<<<<<<< HEAD
+>>>>>>> 076ba74c5e8233360564fa841a87b17bc61d9e71
+=======
+>>>>>>> b59d19bad409350058c35fc79662d4ef9c6dffbc
                     </div>
                     ))}
                 </div>
