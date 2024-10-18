@@ -125,4 +125,4 @@ const Subtraction = () => {
 }
 
 
-export default Subtraction
+export default Subtraction;
