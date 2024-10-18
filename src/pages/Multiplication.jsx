@@ -107,7 +107,7 @@ const Multiplication = () => {
 
 
                             <button className={`bg-[#FFE5DB] text-[#751F00] shadow-[#0000004d] font-semibold font-poppins  text-[1.2rem] py-2 px-5 rounded-[8px]  mt-3  cursor-pointer 
-                         ${selectanswer === null ? 'cursor-not-allowed':''}
+                         ${selectedAnswer === null ? 'cursor-not-allowed':''}
                        `}
                        
                        onClick={NextQuestion}>
