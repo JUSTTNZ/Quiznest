@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { SubtractionQuestion } from '../components/SubtractionArray'; 
 import { CloseCircle } from 'iconsax-react';
-import { setScore } from '../action.jsx';
+import { resetScore, setHighScore, setScore } from '../action.jsx';
 import { Modal } from '../components/modal';
 
 const Subtraction = () => {
@@ -14,13 +14,15 @@ const Subtraction = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const score = useSelector((state) => state.score)
+    const highscore = useSelector((state) => state.HighScore)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
-
     const [previousAnswer, setPreviousAnswer] = useState(null)
     const [showModal, setShowModal] = useState(false)
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const questions = Object.values(SubtractionQuestion)
-
+    useEffect(() => {
+        dispatch(resetScore())
+    },[dispatch])
     const HandleAnswer = (answer) => {
         const MainAnswer = questions[currentQuestion].answer;
         if(selectedAnswer === answer)  return;
@@ -28,16 +30,21 @@ const Subtraction = () => {
         const wasCorrect = selectedAnswer === MainAnswer;
         const currentAnswer = answer === MainAnswer;
         setSelectedAnswer(answer)
-
+        
+        let newscore = score
         if(currentAnswer) {
-            dispatch(setScore(score + 1))
+           newscore += 10
             console.log('score', score)
         }
 
         else if(wasCorrect) {
-            dispatch(setScore(score - 1))
+           newscore -= 10
         }
+       dispatch(setScore(newscore))
 
+       if(newscore > highscore){
+        dispatch(setHighScore(newscore))
+       }
         setPreviousAnswer(selectedAnswer);
     }
 
