@@ -28,7 +28,7 @@ const Multiplication = () => {
 
         if(currentAnswer) {
             dispatch(setScore(score + 1))
-        
+            console.log('score', score)
         }
 
         else if(wasCorrect) {
