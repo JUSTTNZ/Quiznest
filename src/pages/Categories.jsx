@@ -10,7 +10,7 @@ export const Categories = () => {
               
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:p-[50px]" >
                     <div className="flex flex-col items-center "><Link to="/home/add">
-                    <div className="rounded-full bg-blue-700 w-40 h-40 flex justify-center items-center  text-4xl text-white transition duration-300 ease-in-out transform hover:bg-yellow-500 active:scale-95">
+                    <div className="rounded-full bg-red-orange shadow-orange-shadow  w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins">
                   2+2
                   </div>
                   <p className="text-2xl font-semibold mt-2 ml-8">Addition</p>
