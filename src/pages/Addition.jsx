@@ -98,46 +98,29 @@ export const Addition = () => {
 
                        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4' >
                         {problem.options.map((Option,optionindex) => (
- <div className='flex justify-center items-center' key={optionindex}>
- <div className={`flex justify-center items-center rounded-full bg-[#EA8B69] shadow-[#a82d0080] shadow-[12rem] border-[10px] border-[hsl(16,95%,62%)] border w-24 h-24 text-4xl text-white cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110
- ${selectanswer === Option ? 'bg-[hsl(16,100%,53%)]':''}
- `}
- 
- onClick={()=> HandleAnswer(Option)} >
-    
-     {Option}
- </div>
-</div>
-                   
+                            <div className='flex justify-center items-center' key={optionindex}>
+                            <div className={`flex justify-center items-center rounded-full bg-[#EA8B69] shadow-[#a82d0080] shadow-[12rem] border-[10px] border-[hsl(16,95%,62%)] border w-24 h-24 text-4xl text-white cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110
+                            ${selectanswer === Option ? 'bg-[hsl(16,100%,53%)]':''}
+                            `}
+                            
+                            onClick={()=> HandleAnswer(Option)} >
+                                {Option}
+                            </div>
+                            </div>                  
                         ))}
-                       
-
-                     
-
-
                        </div>
-                 
-                       
                        <button className={`bg-[#FFE5DB] text-[#751F00] shadow-[#0000004d] font-semibold font-poppins  text-[1.2rem] py-2 px-5 rounded-[8px]  mt-3  cursor-pointer 
                          ${selectanswer === null ? 'cursor-not-allowed':''}
                        `}
                        
-                       onClick={NextQuestion}
-                       
-                       >
+                       onClick={NextQuestion}>
                                 Next Question
                        </button>
-                    
-
-                     
                     </div>
                 ))}
-
                 </div>
-               
-
             </div>
-<Modal isOpen={showModal} CloseModal={CloseModal} questions={questions} currentQuestion={questions[currentQuestion].question.replace('= ?', '')} MainAnswer={MainAnswer} />
+            <Modal isOpen={showModal} CloseModal={CloseModal} questions={questions} currentQuestion={questions[currentQuestion].question.replace('= ?', '')} MainAnswer={MainAnswer} />
         </div>
     )
 }
