@@ -10,7 +10,7 @@ const Division = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const score = useSelector((state) => {state.score})
+    const score = useSelector((state) => state.score)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
     const [activeOption, setActiveOption] = useState(null)
     const [previousAnswer, setPreviousAnswer] = useState(null)
@@ -28,7 +28,7 @@ const Division = () => {
 
         if(currentAnswer) {
             dispatch(setScore(score + 1))
-        
+            console.log('score', score)
         }
 
         else if(wasCorrect) {
@@ -73,7 +73,7 @@ const Division = () => {
     const MainAnswer = questions[currentQuestion].answer;
     return (
         <>
-        <div className="h-auto bg-gradient-to-r from-pink-500           to-[#ff7e5f]">
+        <div className="h-auto bg-gradient-to-r from-pink-500 to-[#ff7e5f]">
                 <div className="container mx-auto p-12">
                     <div className="flex pl-6 ">
                     <CloseCircle size="32" color="#FF8A65"/>

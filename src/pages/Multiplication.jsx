@@ -10,7 +10,7 @@ const Multiplication = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const score = useSelector((state) => {state.score})
+    const score = useSelector((state) => state.score)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
     const [activeOption, setActiveOption] = useState(null)
     const [previousAnswer, setPreviousAnswer] = useState(null)
@@ -28,7 +28,7 @@ const Multiplication = () => {
 
         if(currentAnswer) {
             dispatch(setScore(score + 1))
-        
+            console.log('score', score)
         }
 
         else if(wasCorrect) {
