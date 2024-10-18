@@ -106,13 +106,13 @@ const Multiplication = () => {
                        </div>
 
 
-                            <button
-                            className={`bg-gray-700 py-2 px-2 mt-3 text-white cursor-pointer 
-                                ${selectedAnswer === null ? 'cursor-not-allowed opacity-50' : 'hover:bg-blue-500'}
-                            `}
-                            onClick={NextQuestion}>
-                            Next Question
-                            </button>
+                            <button className={`bg-[#FFE5DB] text-[#751F00] shadow-[#0000004d] font-semibold font-poppins  text-[1.2rem] py-2 px-5 rounded-[8px]  mt-3  cursor-pointer 
+                         ${selectanswer === null ? 'cursor-not-allowed':''}
+                       `}
+                       
+                       onClick={NextQuestion}>
+                                Next Question
+                       </button>
 
                         </div>
                         ))}

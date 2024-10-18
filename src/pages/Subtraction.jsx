@@ -95,7 +95,7 @@ const Subtraction = () => {
                         {problem.options.map((Option,optionindex) => (
                             <div className='flex justify-center items-center' key={optionindex}>
                             <div className={`flex justify-center items-center rounded-full bg-[#00b09b] shadow-[#96c93d] shadow-[12rem] border-[10px] border-[#00b09b] border w-24 h-24 text-4xl text-white cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110
-                            ${selectedAnswer === Option ? 'bg-[#00b09b80]':''}
+                            ${selectedAnswer === Option ? 'bg-[#00b09b]':''}
                             `}
                             
                             onClick={()=> HandleAnswer(Option)} >
