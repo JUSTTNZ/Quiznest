@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 const initialState =  {
     score: 0,
+    HighScore: 0,
  
     
 }
@@ -11,6 +12,16 @@ switch (action.type) {
             ...state,
             score: action.payload
         }
+    case "SET_HIGHSCORE":
+              return {
+                ...state,
+                HighScore: Math.max(state.HighScore, action.payload)
+              }
+              case "RESET_SCORE":
+            return {
+                ...state,
+                score: 0, // Reset score to 0
+            };
     default:
         return state;
         
