@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 const initialState =  {
     score: 0,
     HighScore: 0,
- 
+    isAddition : true,
+    isSubtraction: true,
     
 }
 const reducer = ( state = initialState, action) => {
@@ -21,7 +22,17 @@ switch (action.type) {
             return {
                 ...state,
                 score: 0, // Reset score to 0
-            };
+            }
+            case "SET_ADDITION":
+              return {
+                ...state,
+                isAddition: action.payload
+              }
+              case "SET_SUBTRACTION":
+                return {
+                  ...state,
+                  isSubtraction: action.payload
+                }
     default:
         return state;
         

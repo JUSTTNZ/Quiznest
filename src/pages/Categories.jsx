@@ -1,5 +1,16 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { setAddition, setSubtraction } from "../action";
+import { useDispatch } from "react-redux";
 export const Categories = () => {
+const dispatch = useDispatch()
+const navigate = useNavigate()
+  const startSubtractionQuiz = () => {
+    navigate('/home/subtraction')
+      dispatch(setAddition(false));
+      dispatch(setSubtraction(true));
+      
+    
+  };
     return(
         <div className='  bg-[#dbf5ff] w-full md:h-[359px] '>
             <div className="container mx-auto ">
@@ -15,20 +26,21 @@ export const Categories = () => {
                   </div>
                   <p className="text-2xl font-semibold mt-2 ml-8">Addition</p>
                   </Link></div>
-                    <div className="flex flex-col items-center"><Link to="/home/subtraction">
-                    <div className="rounded-full bg-custom-blue w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins">
+
+                    <div className="flex flex-col items-center" > 
+                    <div className="rounded-full bg-custom-blue w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins cursor-pointer" onClick={startSubtractionQuiz}>
                   2-2
                   </div>
                   <p className="text-2xl font-semibold mt-2 ml-4">subtraction</p>
-                  </Link></div>
+                  </div>
                     <div className="flex flex-col items-center"><Link to="/home/division">
-                    <div className="rounded-full bg-blue-700 w-40 h-40 flex justify-center items-center  text-4xl text-white transition duration-300 ease-in-out transform hover:bg-yellow-500 active:scale-95">
+                    <div className="rounded-full bg-green-bg w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins">
                   12/2
                   </div>
                   <p className="text-2xl font-semibold mt-2 ml-8">Division</p>
                   </Link></div>
                     <div className="flex flex-col items-center"><Link to="/home/multiplication">
-                    <div className="rounded-full bg-blue-700 w-40 h-40 flex justify-center items-center  text-4xl text-white transition duration-300 ease-in-out transform hover:bg-yellow-500 active:scale-95">
+                    <div className="rounded-full bg-pinks w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins">
                   2X2
                   </div>
                   <p className="text-2xl font-semibold mt-2 ml-4">multiplication</p>

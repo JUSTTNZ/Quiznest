@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetScore, setHighScore, setScore } from '../action';
 import { Modal } from '../components/modal';
 export const Addition = () => {
-    const isAddition = true; 
+    const isAddition = useSelector((state) => state.isAddition);
+    // const isAddition = true; 
     const bgColor = isAddition ? 'bg-red-orange' : '';
     const btnColor = isAddition ? 'bg-orange-btn text-orange-btn-text ':'';
    const navigate = useNavigate()

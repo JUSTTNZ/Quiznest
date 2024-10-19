@@ -2,11 +2,20 @@ import { useSelector } from "react-redux";
 import { useContext } from "react";
 import { NameContext } from "../Context/NameContext";
 import { useNavigate } from "react-router-dom";
+import { setAddition } from "../action";
 
 export const Score = () => {
+  const isAddition = useSelector((state) => state.isAddition);
+  const isSubtraction = useSelector((state) => state.isSubtraction);
   const naviagate = useNavigate()
   const PlayAgain = () => {
-  naviagate('/')
+    if(isAddition){
+      naviagate('/home/add')
+    } else if (isSubtraction){
+      setAddition(false)
+      naviagate('/home/subtraction')
+    }
+
 
   }
   const Mainmenu = () => {
@@ -35,7 +44,7 @@ export const Score = () => {
           </div>
           <div className="grid grid-cols-2 gap-4 mt-4">
             <div className="flex items-center justify-center">
-              <button className="bg-orange-700 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+              <button onClick={PlayAgain} className="bg-orange-700 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
                 Play Again
               </button>
             </div>
