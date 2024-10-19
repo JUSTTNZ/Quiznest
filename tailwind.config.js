@@ -30,6 +30,16 @@ export default {
         'green-wrong-answer-popup': 'hsl(115, 80%, 43%)',
         'green-button': 'hsl(116, 100%, 93%)',
         'green-text': 'hsl(115, 100%, 23%)',
+
+        'pink-bg': 'hsl(196, 100%, 63%)',
+        'pinks': 'hsl(316, 100%, 63%)', 
+        'pink-answers-bg': 'hsl(316, 75%, 66%)',
+        'pink-answers-border': 'hsl(316, 100%, 52%)',
+        'pink-answer-fill': 'hsl(316, 100%, 43%)',
+        'pink-answers-shadow': 'hsla(316, 100%, 33%, 0.502)',
+        'pink-wrong-answer-popup': 'hsl(316, 90%, 63%)',
+        'pink-button': 'hsl(317, 100%, 93%)',
+        'pink-text': 'hsl(316, 100%, 23%)',
       },
       fontFamily:{
         sans : ['Segoe UI', 'Helvetica'],
