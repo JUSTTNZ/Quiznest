@@ -8,7 +8,8 @@ import { resetScore, setHighScore, setScore } from '../action.jsx';
 import { Modal } from '../components/modal';
 
 const Subtraction = () => {
-    const isSubtraction = true; 
+    const isSubtraction = useSelector((state) => state.isSubtraction);
+    // const isSubtraction = true; 
     const bgColor = isSubtraction ? 'bg-blue-wrong-answer-popup' : '';
     const btnColor = isSubtraction? 'text-blue-text bg-custom-blue':''
     const navigate = useNavigate()
