@@ -1,23 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { DivisionQuestion } from '../components/Divisionarray.jsx'
 import { CloseCircle } from 'iconsax-react';
-import { setScore } from '../action.jsx';
+import { resetScore, setHighScore, setScore } from '../action.jsx';
 import { Modal } from '../components/modal';
 
 const Division = () => {
-
+    const isDivision = true; 
+    const bgColor = isDivision ? 'bg-green-wrong-answer-popup' : '';
+    const btnColor = isDivision ? 'text-green-text bg-green-button':''
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const score = useSelector((state) => state.score)
+    const highscore = useSelector((state) => state.HighScore)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
-    const [activeOption, setActiveOption] = useState(null)
     const [previousAnswer, setPreviousAnswer] = useState(null)
     const [showModal, setShowModal] = useState(false)
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const questions = Object.values(DivisionQuestion)
-
+    useEffect(() => {
+        dispatch(resetScore())
+    },[dispatch])
     const HandleAnswer = (answer) => {
         const MainAnswer = questions[currentQuestion].answer;
         if(selectedAnswer === answer)  return;
@@ -25,16 +29,19 @@ const Division = () => {
         const wasCorrect = selectedAnswer === MainAnswer;
         const currentAnswer = answer === MainAnswer;
         setSelectedAnswer(answer)
-
+        let newscore = score
         if(currentAnswer) {
-            dispatch(setScore(score + 1))
+            newscore += 10
             console.log('score', score)
         }
 
         else if(wasCorrect) {
-            dispatch(setScore(score - 1))
+            newscore -= 10
         }
-
+         dispatch(setScore(newscore))
+         if(newscore > highscore){
+            dispatch(setHighScore(newscore))
+         }
         setPreviousAnswer(selectedAnswer);
     }
 
@@ -69,33 +76,39 @@ const Division = () => {
         moveToTheNextQuestion()
     }
 
-
+    const LeaveGame = () => {
+        if (confirm("Are you sure you want to leave the game?")) {
+          navigate('/home')
+        } 
+      }
     const MainAnswer = questions[currentQuestion].answer;
     return (
         <>
-        <div className="h-auto bg-gradient-to-r from-pink-500 to-[#ff7e5f]">
-                <div className="container mx-auto p-12">
-                    <div className="flex pl-6 ">
-                    <CloseCircle size="32" color="#FF8A65"/>
-                    </div>
-                    <div  >
-                    {questions.map((problem, index)=> (
-                        <div key={index}
-                        className={`container py-[100px] h-screen flex flex-col justify-center items-center
-                        ${index === currentQuestion ? 'block': 'hidden'}
-                        
-                        `} >
-                            <p className='text center' >
-                                Question {currentQuestion + 1} of {questions.length}
-                            </p>
-                        <h2 className='text-7xl text-center tracking-tight mb-5'>
-                            {problem.question}
-                        </h2>
-                           <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4' >
+       <div className="h-auto bg-green-bg ">
+            <div className="container mx-auto p-12">
+                <div className="flex pl-6 ">
+                <CloseCircle size="32" color="#FFF"  onClick={LeaveGame}/>
+                </div>
+                <div  >
+                {questions.map((problem, index)=> (
+                     <div key={index}
+                     className={`container py-[80px] flex flex-col justify-center items-center
+                      ${index === currentQuestion ? 'block': 'hidden'}
+                     
+                     `} >
+                        <p className='text center text-white font-poppins' >
+                         
+                            Question {currentQuestion + 1} of {questions.length}
+                        </p>
+                       <h2 className=' text-[5rem] font-semibold tracking-tight mb-5 text-white font-poppins'>
+                        {problem.question}
+                       </h2>
+
+                       <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4' >
                         {problem.options.map((Option,optionindex) => (
                             <div className='flex justify-center items-center' key={optionindex}>
-                            <div className={`flex justify-center items-center rounded-full bg-pink-500 shadow-[#ff7e5f] shadow-[12rem] border-[10px] border-pink-500 border w-24 h-24 text-4xl text-white cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110
-                            ${selectedAnswer === Option ? 'bg-[#ff7e5f]':''}
+                            <div className={`flex justify-center items-center rounded-full bg-green-answers-bg shadow-green-answers-shadow shadow-[12rem] border-[10px] border-green-answers-border border w-28 h-28 text-[3rem] font-semibold text-white cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110
+                            ${selectedAnswer === Option ? 'bg-green-wrong-answer-popup':''}
                             `}
                             
                             onClick={()=> HandleAnswer(Option)} >
@@ -104,22 +117,21 @@ const Division = () => {
                             </div>                  
                         ))}
                        </div>
-
-
-                            <button
-                            className={`bg-gray-700 py-2 px-2 mt-3 text-white cursor-pointer 
-                                ${selectedAnswer === null ? 'cursor-not-allowed opacity-50' : 'hover:bg-blue-500'}
-                            `}
-                            onClick={NextQuestion}>
-                            Next Question
-                            </button>
-
-                        </div>
-                        ))}
+                       <button className={`bg-green-button text-green-text shadow-[#0000004d] font-semibold font-poppins  text-[1.2rem] py-2 px-5 rounded-[8px]  mt-3  cursor-pointer 
+                         ${selectedAnswer === null ? 'cursor-not-allowed':''}
+                       `}
+                       
+                       onClick={NextQuestion}>
+                                Next Question
+                       </button>
                     </div>
+                ))}
                 </div>
-                <Modal isOpen={showModal} CloseModal={CloseModal} questions={questions} currentQuestion={questions[currentQuestion].question.replace('= ?', '')} MainAnswer={MainAnswer} />
             </div>
+            <Modal isOpen={showModal} CloseModal={CloseModal} questions={questions} currentQuestion={questions[currentQuestion].question.replace('= ?', '')} MainAnswer={MainAnswer}
+            bgColor={bgColor} btnColor={btnColor}
+            />
+        </div>
         </>
     )
 }

@@ -21,6 +21,15 @@ export default {
         'blue-answers-shadow': 'hsla(196, 100%, 33%, 0.502)',
         'blue-wrong-answer-popup': 'hsl(196, 100%, 43%)',
         'blue-text':'hsl(196, 100%, 23%)',
+        
+        'green-bg': 'hsl(115, 70%, 53%)',
+        'green-answers-bg': 'hsl(115, 75%, 66%)',
+        'green-answers-border': 'hsl(115, 95%, 52%)',
+        'green-answer-fill': 'hsl(115, 100%, 33%)',
+        'green-answers-shadow': 'hsla(115, 100%, 33%, 0.502)',
+        'green-wrong-answer-popup': 'hsl(115, 80%, 43%)',
+        'green-button': 'hsl(116, 100%, 93%)',
+        'green-text': 'hsl(115, 100%, 23%)',
       },
       fontFamily:{
         sans : ['Segoe UI', 'Helvetica'],

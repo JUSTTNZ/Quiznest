@@ -82,9 +82,7 @@ const Subtraction = () => {
     const LeaveGame = () => {
         if (confirm("Are you sure you want to leave the game?")) {
           navigate('/home')
-        } else {
-          // User clicked "Cancel"
-        }
+        } 
       }
     const MainAnswer = questions[currentQuestion].answer;
     return (
