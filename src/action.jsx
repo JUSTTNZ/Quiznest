@@ -22,3 +22,11 @@ export const setScore = (score) => ({
                 type: "SET_SUBTRACTION",
                 payload:sub
                 })
+                export const   setDivision = (div) => ({
+                    type: "SET_DIVISION",
+                    payload:div
+                    })
+                    export const   setMultiplication = (mul) => ({
+                        type: "SET_MULTIPLICATION",
+                        payload:mul
+                        })

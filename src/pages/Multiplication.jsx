@@ -8,7 +8,8 @@ import { resetScore, setHighScore, setScore } from '../action.jsx';
 import { Modal } from '../components/modal';
 
 const Multiplication = () => {
-    const isMuliplication = true; 
+    const isMuliplication = useSelector((state) => state.isMuliplication);
+    // const isMuliplication = true; 
     const bgColor = isMuliplication ? 'bg-pink-wrong-answer-popup' : '';
     const btnColor = isMuliplication ? 'text-pink-text bg-pink-button':''
     const navigate = useNavigate()

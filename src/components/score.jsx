@@ -7,19 +7,25 @@ import { setAddition } from "../action";
 export const Score = () => {
   const isAddition = useSelector((state) => state.isAddition);
   const isSubtraction = useSelector((state) => state.isSubtraction);
-  const naviagate = useNavigate()
+  const isDivision = useSelector((state) => state.isDivision);
+  const isMuliplication = useSelector((state) => state.isMuliplication);
+  const navigate = useNavigate()
   const PlayAgain = () => {
     if(isAddition){
-      naviagate('/home/add')
+      navigate('/home/add')
     } else if (isSubtraction){
-      setAddition(false)
-      naviagate('/home/subtraction')
+      
+      navigate('/home/subtraction')
+    } else if (isDivision){
+      navigate('/home/division')
+    } else if(isMuliplication){
+      navigate('/home/multiplication')
     }
 
 
   }
   const Mainmenu = () => {
-    naviagate('/home')
+    navigate('/home')
 
   }
   const { name } = useContext(NameContext)
