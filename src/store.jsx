@@ -4,7 +4,8 @@ const initialState =  {
     HighScore: 0,
     isAddition : true,
     isSubtraction: true,
-    
+    isDivision: true,
+    isMuliplication: true,
 }
 const reducer = ( state = initialState, action) => {
 switch (action.type) {
@@ -32,7 +33,17 @@ switch (action.type) {
                 return {
                   ...state,
                   isSubtraction: action.payload
+                }    
+                 case "SET_DIVISION":
+                return {
+                  ...state,
+                  isDivision: action.payload
                 }
+                case "SET_MULTIPLICATION":
+                  return {
+                    ...state,
+                    isMuliplication: action.payload
+                  }
     default:
         return state;
         

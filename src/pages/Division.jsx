@@ -8,7 +8,8 @@ import { resetScore, setHighScore, setScore } from '../action.jsx';
 import { Modal } from '../components/modal';
 
 const Division = () => {
-    const isDivision = true; 
+    const isDivision = useSelector((state) => state.isDivision);
+    // const isDivision = true; 
     const bgColor = isDivision ? 'bg-green-wrong-answer-popup' : '';
     const btnColor = isDivision ? 'text-green-text bg-green-button':''
     const navigate = useNavigate()
