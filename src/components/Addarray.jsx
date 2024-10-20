@@ -20,9 +20,9 @@ export const AdditionQuestion = {
       answer: 10
     },
   question5:  {
-      question: "9+2=?",
-      options: [10, 11, 12, 13],
-      answer: 11
+      question: "12+2=?",
+      options: [10, 14, 12, 13],
+      answer: 14
     }
 };
 
