@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'background': '#2a737a',
+        'background': '#005675',
         'primary': '#d5e9ef',
         'red-orange': 'hsl(16, 100%, 53%)',
          'orange-btn': '#FFE5DB',

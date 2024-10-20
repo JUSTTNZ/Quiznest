@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { NameContext } from '../Context/NameContext';
 
 const Hello = () => {
@@ -32,7 +32,7 @@ const Hello = () => {
           }
 
           .animate-moveBlob {
-            animation: moveBlob 5s linear infinite;
+            animation: moveBlob 10s linear infinite;
           }
 
           .blob {
@@ -41,11 +41,11 @@ const Hello = () => {
           }
         `}
       </style>
-      <div className='relative flex flex-col justify-center gap-4 px-2 bg-background w-full h-[200px] text-white text-2xl overflow-hidden'>
-        <p className={`text ${scale === 0 ? 'opacity-0' : 'opacity-100'}`}>Hello {name.toUpperCase()}👋</p>
-        <p className={`text ${scale === 0 ? 'opacity-0' : 'opacity-100'}`}>Please select a category you would like to play</p>
+      <div className='relative flex md:pl-[30px] flex-col justify-center gap-4 px-2 bg-background w-full h-[200px] text-white text-2xl overflow-hidden'>
+        <p className={`text font-semibold font-poppins ${scale === 0 ? 'opacity-0' : 'opacity-100'}`}>Hello {name.toUpperCase()}👋</p>
+        <p className={`text font-semibold font-poppins ${scale === 0 ? 'opacity-0' : 'opacity-100'}`}>Please select a category you would like to play</p>
         <div
-          className={`absolute left-0 transform -translate-y-1/2 w-[200px] h-[200px] rounded-full animate-moveBlob z-0 blob`}
+          className={`absolute left-0 transform -translate-y-1/2 w-[150px] h-[150px] rounded-full animate-moveBlob z-0 blob`}
           style={{
             background: `linear-gradient(to right, rgba(42, 115, 122, 0.3), rgba(255, 255, 255, 0.3))`
           }}
