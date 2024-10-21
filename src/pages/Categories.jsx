@@ -52,7 +52,7 @@ const startAdditionQuiz = () => {
     
                 </div>
               
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:p-[50px]" >
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-[10px] md:p-[50px]" >
                     <div className="flex flex-col items-center ">
                     <div className="rounded-full bg-red-orange shadow-orange-shadow  w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 " onClick={startAdditionQuiz}>
                   2+2

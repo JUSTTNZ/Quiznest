@@ -75,7 +75,7 @@ export const AdditionQuestion = {
       answer: 30
   },
   question16: {
-      question: "3 + 7 = ?",
+      question: "3+7=?",
       options: [9, 10, 11, 12],
       answer: 10
   },
@@ -269,3 +269,11 @@ export const getRandomQuestions = (obj, count) => {
   }
   
   export const selectedQuestions = getRandomQuestions(AdditionQuestion, 50)
+  
+  export const Shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+      return array; 
+}
