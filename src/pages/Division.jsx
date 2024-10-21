@@ -94,7 +94,7 @@ const Division = () => {
                         <CloseCircle size="32" color="#FFF" onClick={leaveGame} />
                     </div>
                     <div>
-                        {questions && questions.length > 0 && questions.map((problem, index) => (
+                        {questions && questions.length > 0 && questions.map((question, index) => (
                             <div key={index}
                                 className={`container py-[80px] flex flex-col justify-center items-center
                                     ${index === currentQuestion ? 'block' : 'hidden'}
@@ -104,11 +104,11 @@ const Division = () => {
                                 </p>
 
                                 <h2 className='text-[5rem] font-semibold tracking-tight mb-5 text-white font-poppins'>
-                                    {Object.values(problem)[0].question}
+                                    {Object.values(question)[0].question}
                                 </h2>
 
                                 <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4'>
-                                    {Object.values(problem)[0].options.map((option, optionIndex) => (
+                                    {Object.values(question)[0].options.map((option, optionIndex) => (
                                         <div className='flex justify-center items-center' key={optionIndex}>
                                             <div className={`flex justify-center items-center rounded-full bg-green-answers-bg shadow-green-answers-shadow shadow-[12rem] border-[10px] border-green-answers-border w-28 h-28 text-[3rem] font-semibold text-white cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110
                                                 ${selectedAnswer === option ? 'bg-green-wrong-answer-popup' : ''}

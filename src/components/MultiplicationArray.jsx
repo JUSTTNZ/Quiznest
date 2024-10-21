@@ -216,7 +216,7 @@ export const MultiplicationQuestion = {
   },
   question44: {
       question: "11 x 8 = ?",
-      options: [82, 83, 84, 85],
+      options: [82, 83, 84, 88],
       answer: 88
   },
   question45: {
@@ -268,4 +268,4 @@ export const getRandomQuestions = (obj, count) => {
   return randomKeys.map(key => ({ [key]: obj[key]}) )
 }
 
-export const selectedQuestions = getRandomQuestions(MultiplicationQuestion, 5)
+export const selectedQuestions = getRandomQuestions(MultiplicationQuestion, 10)
