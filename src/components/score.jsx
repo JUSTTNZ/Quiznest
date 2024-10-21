@@ -8,7 +8,7 @@ export const Score = () => {
   const isAddition = useSelector((state) => state.isAddition);
   const isSubtraction = useSelector((state) => state.isSubtraction);
   const isDivision = useSelector((state) => state.isDivision);
-  const isMuliplication = useSelector((state) => state.isMuliplication);
+  const isMultiplication = useSelector((state) => state.isMuliplication);
   const navigate = useNavigate()
   const btncolor = isAddition ? 'bg-orange-btn text-orange-btn-text': isSubtraction ?'text-blue-text bg-custom-blue':isDivision? 'text-green-text bg-green-button': isMuliplication? 'text-pink-text bg-pink-button':''
     const bgcolor = isAddition ? 'bg-red-orange': isSubtraction ?'bg-custom-blue-dark':isDivision? 'bg-green-bg ': isMuliplication? 'bg-pinks ':''
@@ -20,7 +20,7 @@ export const Score = () => {
       navigate('/home/subtraction')
     } else if (isDivision){
       navigate('/home/division')
-    } else if(isMuliplication){
+    } else if(isMultiplication){
       navigate('/home/multiplication')
     }
 
