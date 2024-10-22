@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NameContext } from '../Context/NameContext';
@@ -61,7 +62,7 @@ const Login = () => {
       <div className='bg-background h-screen flex items-center justify-center cursor-pointer font-sans'>
       <span className='absolute top-4 left-8 text-4xl text-white font-bold'>QUIZNEST.</span>
         <div className='bg-primary flex flex-col max-w-full mx-4 p-8 rounded gap-8'>
-          <h2 className='font-bold font-sans leading-loose text-xl text-background'>
+          <h2 className='font-semibold font-poppins leading-loose text-xl text-background'>
             Enter your name to begin
           </h2>
           <input
@@ -70,7 +71,7 @@ const Login = () => {
             value={inputValue}
             onChange={handleInputChange}
             placeholder='Type your name here'
-            className='text-center font-sans text-gray-700 p-2 rounded-full focus:outline-none border border-gray-300'
+            className='text-center font-poppins font-semibold text-gray-700 p-2 rounded-full focus:outline-none border border-gray-300'
             onFocus={handleFocus}
             onBlur={handleOnBlur}
           />
@@ -87,7 +88,7 @@ const Login = () => {
           <div className='flex justify-center mt-[-40px]'>
             <button
               onClick={navigateToSubjectPage}
-              className='bg-background py-2 px-8 text-white font-sans font-bold text-lg rounded transition transform duration-300 active:bg-yellow-700 active:scale-95'>
+              className='bg-background py-2 px-8 font-poppins text-white  font-semibold text-lg rounded transition transform duration-300 active:bg-yellow-700 active:scale-95'>
               Start Playing
             </button>
           </div>

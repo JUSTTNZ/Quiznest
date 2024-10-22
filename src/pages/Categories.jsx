@@ -57,7 +57,7 @@ const startAdditionQuiz = () => {
                     <div className="rounded-full bg-red-orange shadow-orange-shadow  w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 " onClick={startAdditionQuiz}>
                   2+2
                   </div>
-                  <p className="text-2xl font-semibold mt-2 ml-8">Addition</p>
+                  <p className="text-2xl font-semibold mt-2 ml-8">addition</p>
                   </div>
 
                     <div className="flex flex-col items-center" > 
@@ -70,7 +70,7 @@ const startAdditionQuiz = () => {
                     <div className="rounded-full bg-green-bg w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110" onClick={startDivisionQuiz}>
                   12/2
                   </div>
-                  <p className="text-2xl font-semibold mt-2 ml-8">Division</p>
+                  <p className="text-2xl font-semibold mt-2 ml-8">division</p>
                   </div>
                     <div className="flex flex-col items-center">
                     <div className="rounded-full bg-pinks w-40 h-40 flex justify-center items-center  text-4xl text-white font-semibold font-poppins cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110" onClick={startMultiplicationQuiz}>

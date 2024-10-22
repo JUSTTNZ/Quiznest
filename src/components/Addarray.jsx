@@ -251,29 +251,3 @@ export const AdditionQuestion = {
   }
 };
 
-
-export const getRandomQuestions = (obj, count) => {
-    const keys = Object.keys(obj);
-    const randomKeys = []
-  
-    while(randomKeys.length < count) {
-      const randomIndex = Math.floor(Math.random() * keys.length)
-      const key = keys[randomIndex]
-  
-      if(!randomKeys.includes(key)) {
-        randomKeys.push(key)
-      }
-    }
-  
-    return randomKeys.map(key => ({ [key]: obj[key]}) )
-  }
-  
-  export const selectedQuestions = getRandomQuestions(AdditionQuestion, 50)
-  
-  export const Shuffle = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-    }
-      return array; 
-}
