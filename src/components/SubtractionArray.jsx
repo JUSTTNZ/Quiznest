@@ -221,7 +221,7 @@ export const SubtractionQuestion = {
   },
   question45: {
       question: "90 - 30 = ?",
-      options: [55, 56, 57, 58],
+      options: [55, 60, 57, 58],
       answer: 60
   },
   question46: {
@@ -251,21 +251,3 @@ export const SubtractionQuestion = {
   }
 };
 
-
-export const getRandomQuestions = (obj, count) => {
-    const keys = Object.keys(obj);
-    const randomKeys = []
-  
-    while(randomKeys.length < count) {
-      const randomIndex = Math.floor(Math.random() * keys.length)
-      const key = keys[randomIndex]
-  
-      if(!randomKeys.includes(key)) {
-        randomKeys.push(key)
-      }
-    }
-  
-    return randomKeys.map(key => ({ [key]: obj[key]}) )
-  }
-  
-  export const selectedQuestions = getRandomQuestions(SubtractionQuestion, 50)

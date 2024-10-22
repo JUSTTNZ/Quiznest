@@ -53,12 +53,12 @@ export const Score = () => {
           </div>
           <div className="grid grid-cols-2 gap-4 mt-4">
             <div className="flex items-center justify-center">
-              <button onClick={PlayAgain} className={`text-white font-semibold text-[1.1rem] md:text-[1.4rem]  font-poppins py-2 px-4 rounded ${btncolor}`}>
+              <button onClick={PlayAgain} className={`font-semibold text-[1.1rem] md:text-[1.4rem]  font-poppins py-2 px-4 rounded ${btncolor}`}>
                 Play Again
               </button>
             </div>
             <div className="flex items-center justify-center">
-              <button onClick={Mainmenu} className={`text-white font-semibold text-[1.1rem] md:text-[1.4rem] font-poppins py-2 px-4 rounded ${btncolor}`}>
+              <button onClick={Mainmenu} className={`font-semibold text-[1.1rem] md:text-[1.4rem] font-poppins py-2 px-4 rounded ${btncolor}`}>
                 Main menu
               </button>
             </div>

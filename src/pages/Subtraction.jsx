@@ -2,12 +2,12 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { SubtractionQuestion, getRandomQuestions } from '../components/SubtractionArray'; 
+import { SubtractionQuestion } from '../components/SubtractionArray'; 
 import { CloseCircle } from 'iconsax-react';
 import { resetScore, setHighScore, setScore } from '../action.jsx';
 import { Modal } from '../components/modal';
+import { GetRandomQuestions } from '../components/random.jsx';
 
-export const selectedQuestions = getRandomQuestions(SubtractionQuestion, 10);
 
 const Subtraction = () => {
 
@@ -24,13 +24,22 @@ const Subtraction = () => {
     const [showModal, setShowModal] = useState(false)
     const [currentQuestion, setCurrentQuestion] = useState(0)
 
-    const questions = selectedQuestions;
+    const [questionsrandom, setQuestionsrandom] = useState([]); 
 
     useEffect(() => {
         dispatch(resetScore())
+        const selectedShuffledQuestions = GetRandomQuestions(SubtractionQuestion, 10);
+        setQuestionsrandom(selectedShuffledQuestions); // make question shuffle only when components mounts
     },[dispatch])
+
+  // Ensure that questions are loaded before accessing them
+  if (questionsrandom.length === 0) {
+    return 
+}
+const questions = Object.values(questionsrandom)
+
     const HandleAnswer = (answer) => {
-        const MainAnswer = Object.values(questions[currentQuestion])[0].answer;
+     const MainAnswer = questions[currentQuestion].answer;
         if(selectedAnswer === answer)  return;
        
         const wasCorrect = selectedAnswer === MainAnswer;
@@ -68,7 +77,7 @@ const Subtraction = () => {
 
 
     const NextQuestion = () => {
-       const MainAnswer = Object.values(questions[currentQuestion])[0].answer;
+        const MainAnswer = questions[currentQuestion].answer;
         if(selectedAnswer !== MainAnswer) {
             setShowModal(true)
             return;
@@ -88,7 +97,7 @@ const Subtraction = () => {
           navigate('/home')
         } 
       }
-
+      const MainAnswer = questions[currentQuestion].answer;
     return (
         <>
          <div className="h-auto bg-custom-blue-dark ">
@@ -97,7 +106,7 @@ const Subtraction = () => {
                 <CloseCircle size="32" color="#FFF"  onClick={LeaveGame}/>
                 </div>
                 <div  >
-                {questions && questions.length > 0 && questions.map((question, index)=> (
+                {questions.map((question, index)=> (
                      <div key={index}
                      className={`container py-[80px] flex flex-col justify-center items-center
                       ${index === currentQuestion ? 'block': 'hidden'}
@@ -108,11 +117,11 @@ const Subtraction = () => {
                             Question {currentQuestion + 1} of {questions.length}
                         </p>
                        <h2 className=' text-[5rem] font-semibold tracking-tight mb-5 text-white font-poppins'>
-                        {Object.values(question)[0].question}
+                        {question.question}
                        </h2>
 
                        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-5 mb-4' >
-                        {Object.values(question)[0].options.map((Option,optionindex) => (
+                        {question.options.map((Option,optionindex) => (
                             <div className='flex justify-center items-center' key={optionindex}>
                             <div className={`flex justify-center items-center rounded-full bg-blue-answers-bg shadow-blue-answers-shadow shadow-[12rem] border-[10px] border-blue-answers-border border w-28 h-28 text-[3rem] font-semibold text-white cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110
                             ${selectedAnswer === Option ? 'bg-blue-wrong-answer-popup':''}
@@ -135,14 +144,13 @@ const Subtraction = () => {
                 ))}
                 </div>
             </div>
-            <Modal 
-                isOpen={showModal} 
-                CloseModal={CloseModal} 
-                questions={questions}
-                currentQuestion={Object.values(questions[currentQuestion])[0].question.replace('= ?', '')} // removes "= ?" from question
-                MainAnswer={Object.values(questions[currentQuestion])[0].answer} // the correct answer
-                bgColor={bgColor} 
-                btnColor={btnColor}
+            <Modal isOpen={showModal}
+             CloseModal={CloseModal} 
+             questions={questions}
+            currentQuestion={questions[currentQuestion].question.replace('= ?', '')} 
+            MainAnswer={MainAnswer}
+            bgColor={bgColor}
+             btnColor={btnColor}
             />
         </div>
         </>
