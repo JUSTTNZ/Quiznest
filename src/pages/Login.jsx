@@ -60,7 +60,7 @@ const Login = () => {
   return (
     <>
       <div className='bg-background h-screen flex items-center justify-center cursor-pointer font-sans'>
-      <span className='absolute top-4 left-8 text-4xl text-white font-bold'>QUIZNEST.</span>
+      <span className='absolute top-4 left-12 text-4xl text-white font-bold'>QUIZNEST.</span>
         <div className='bg-primary flex flex-col max-w-full mx-4 p-8 rounded gap-8'>
           <h2 className='font-semibold font-poppins leading-loose text-xl text-background'>
             Enter your name to begin
